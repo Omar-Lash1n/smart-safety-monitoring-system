@@ -1,6 +1,5 @@
-name: PlatformIO Native CI
+name: PlatformIO CI Pipeline
 
-# Pipeline هيرن إمتى؟ 
 on:
   push:
     branches: [ "main", "master" ]
@@ -8,8 +7,8 @@ on:
     branches: [ "main", "master" ]
 
 jobs:
-  test:
-    name: Run Native Unit Tests
+  test_and_build:
+    name: Run Unit Tests & Build ESP32 Firmware
     runs-on: ubuntu-latest
 
     steps:
@@ -26,5 +25,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade platformio
 
-      - name: Run Native Tests
+      - name: Run Native Unit Tests
         run: pio test -e native
+
+      - name: Build ESP32 Firmware
+        run: pio run -e esp32dev
