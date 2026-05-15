@@ -24,3 +24,11 @@ bool evaluateDanger(float distance, int irState, int threshold) {
     
     return danger;
 }
+
+void controlAlertLED(bool danger, uint8_t ledPin) {
+    if (danger) {
+        digitalWrite(ledPin, HIGH);
+    } else {
+        digitalWrite(ledPin, LOW);
+    }
+}

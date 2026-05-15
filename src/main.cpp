@@ -232,17 +232,9 @@ void processingTask(void *pvParameters) {
 // ======================================================
 
 void alertTask(void *pvParameters) {
-
   while (1) {
-
-    if (emergencyMode) {
-
-      digitalWrite(LED_PIN, HIGH);
-
-    } else {
-
-      digitalWrite(LED_PIN, LOW);
-    }
+    // استخدام دالة اللوجيك اللي اختبرناها
+    controlAlertLED(emergencyMode, LED_PIN);
 
     vTaskDelay(pdMS_TO_TICKS(100));
   }
